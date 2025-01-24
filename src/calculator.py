@@ -46,8 +46,7 @@ def parse(string):
 def main(expression):
     print(f'I am going to calculate: {expression}')
     value = parse(expression)()
-    print(value)
-
+    print(f'The value is: {value}')
 
 
 
