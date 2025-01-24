@@ -3,21 +3,33 @@ import argparse
 def parse_number(token, index):
     return ((lambda: float(token)), index + 1)
 
-def parse_factor(tokens, index):
+def parse_factor(tokens, index, prev):
+    if index == len(tokens):
+        return prev, index
     number, index = parse_number(tokens[index], index)
     if index == len(tokens):
         return number, index
     operator = tokens[index]
+    if operator not in ['/', '*']:
+        return number, index
     expr, index = parse_addition(tokens, index + 1)
-    return ((lambda: print(number(), operator, expr())), index)
+    if operator == '*':
+        return ((lambda: number() * expr()), index)
+    elif operator == '/':
+        return ((lambda: number() * expr()), index)
 
 def parse_addition(tokens, index):
-    number, index = parse_factor(tokens[index], index)
+    number, index = parse_factor(tokens, index, None)
     if index == len(tokens):
         return number, index
     operator = tokens[index]
-    expr, index = parse_factor(tokens, index + 1)
-    return ((lambda: print(number(), operator, expr())), index)
+    if operator not in ['+', '-']:
+        return number, index
+    expr, index = parse_factor(tokens, index + 1, number)
+    if operator == '+':
+        return ((lambda: number() + expr()), index)
+    elif operator == '-':
+        return ((lambda: number() - expr()), index)
 
 def parse_tokens(tokens):
     index = 0
@@ -33,7 +45,8 @@ def parse(string):
 
 def main(expression):
     print(f'I am going to calculate: {expression}')
-    parse(expression)()
+    value = parse(expression)()
+    print(value)
 
 
 
