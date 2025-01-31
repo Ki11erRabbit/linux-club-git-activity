@@ -23,6 +23,7 @@ A commit is git's way of tracking changes made to files.
 To add a file, it is as simple as doing `git add <filename>` where `<filename>` is the name of the file you are changing.
 
 To commit your changes, simply do `git commit -m <commit message>` where `<commit message>` is the message for the commit.
+If you wish to put a sentence in the commit, surround the message in either single or double quotes.
 Always add meaningful messages to your commits.
 
 If you didn't do `git commit -m` and instead `git commit`, you will likely find yourself in Vim. To enter a message through Vim, simply press the `i` key to enter into insert mode.
