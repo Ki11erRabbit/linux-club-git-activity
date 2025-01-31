@@ -4,7 +4,7 @@ Today your job is to complete a simple calculator application. To start simply c
 
 If you don't have git installed, you can download it [here](https://git-scm.com/downloads).
 
-Once you have done that, you will add your changes to the branch `start-here`
+Once you have done that, you will add your changes to the branch `start-here`. You will need a text editor of some kind and python to be installed.
 
 ## How to change branches
 To change branches, simply do `git checkout <Branch Name>` where `<Branch Name>` is the name of the branch you would like to change to.
@@ -16,6 +16,8 @@ Once you have changed branches, your task is to change line 49 from `print(value
 * etc
 
 Once you have made this change, you should add and commit your changes to the branch `start-here`.
+
+A commit is git's way of tracking changes made to files.
 
 ## How to add and commit
 To add a file, it is as simple as doing `git add <filename>` where `<filename>` is the name of the file you are changing.
@@ -66,6 +68,8 @@ To help us find the bug, we will use a feature of git called bisect.
 
 Git Bisect automates a binary search on your commits to find bugs.
 To begin, simply type `git bisect start`.
+
+If you get an error, make sure you are in the folder `linux-club-git-activity`.
 
 You first start by marking the current commit as bad by typing `git bisect bad`.
 Now you need to select a good commit. Since you don't know when it was good, here is the commit that was "good". `59d1e99`
